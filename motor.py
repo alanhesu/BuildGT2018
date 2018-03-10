@@ -13,30 +13,26 @@ GPIO.setup(pwm2,GPIO.OUT)
 GPIO.setup(dir1,GPIO.OUT)
 GPIO.setup(dir2,GPIO.OUT)
 
-p1 = GPIO.PWM(pwm1,800)
-p2 = GPIO.PWM(pwm2,800)
+#p1 = GPIO.PWM(pwm1,800)
+#p2 = GPIO.PWM(pwm2,800)
 
-def slap:
+def slap():
     lifter(1,2)
     time.sleep(.1)
-    slapper(1,2)
-    time.sleep(.1)
-
     lifter(0,2)
-    time.sleep(.1)
-    slapper(0,2)
-    time.sleep(.1)
 
 def lifter(direction, dur):
-    GPIO.output(dir1, direction)
-    p1.start(50)
-    time.sleep(dur)
-    GPIO.output(dir1, direction)
-    p1.stop()
+    if direction == 1:
+        GPIO.output(pwm1, GPIO.LOW)
+        GPIO.output(pwm2, GPIO.HIGH)
+        time.sleep(dur)
+        print("running")
+    elif direction == 0:
+        GPIO.output(pwm2, GPIO.LOW)
+        GPIO.output(pwm1, GPIO.HIGH)
+        time.sleep(dur)
+    GPIO.output(pwm1, GPIO.LOW)
+    GPIO.output(pwm2, GPIO.LOW)
 
-def slapper(dir, dur):
-    GPIO.output(dir2, direction)
-    p2.start(50)
-    time.sleep(dur)
-    GPIO.output(dir1, direction)
-    p2.stop()
+slap()
+
