@@ -28,7 +28,7 @@ from __future__ import division
 import re
 import sys
 import os
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "C:\Projects\BuildGT2018\BuildGT2018-1e78d86d2e2a.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "BuildGT2018-1e78d86d2e2a.json"
 
 from google.cloud import speech
 from google.cloud.speech import enums
